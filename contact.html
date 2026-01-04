@@ -3,14 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact & Book | Quilim Restaurant</title>
+  <title>Contact & Book Table | Quilim Restaurant</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="icon" href="assets/images/favicon.ico">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
+<!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
   <div class="container">
     <a class="navbar-brand" href="index.html">Quilim</a>
-Listenerród truncated due to length...
-::contentReference[oaicite:2]{index=2}
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Contact + Booking Section -->
+<section class="container py-5">
+  <h2 class="text-center mb-4">Contact & Book a Table</h2>
+
+  <div class="row g-4">
+
+    <!-- Reservation Form -->
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <form method="POST" action="https://script.google.com/macros/s/AKfycbwBFgoiUQK9_xjyPGg9eZZmZTeOVXusW1J5OpzOM1za4NSowRJ-bxBfyE0WRduf2RkK/exec">
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" id="phone" name="phone" class="form-control" placeholder="e.g. 0418540373" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="date" class="form-label">Reservation Date</label>
+              <input type="date" id="date" name="date" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="time" class="form-label">Reservation Time</label>
+              <input type="time" id="time" name="time" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="guests" class="form-label">Number of Guests</label>
+              <input type="number" id="guests" name="guests" class="form-control" min="1" placeholder="e.g. 4" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="requests" class="form-label">Special Requests (optional)</label>
+              <textarea id="requests" name="requests" class="form-control" rows="3"
+                placeholder="Any special requests?"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Book My Table</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map + Contact Info -->
+    <div class="col-md-6">
+      <div class="ratio ratio-16x9 mb-3">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.1638460725503!2d73.11277397389387!3d31.409611552608926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3922687391e41451%3A0xfb71454b9a9c37d0!2sGovt.%20Graduate%20College%20of%20Commerce%20Peoples%20Colony%20Faisalabad!5e0!3m2!1sen!2s!4v1767542922959!5m2!1sen!2s"
+          allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <p><strong>Address:</strong><br> C457+47J Hashmat Ali, Khan Rd, Block C People's Colony No 1, Faisalabad</p>
+      <p><strong>Phone:</strong> (041) 8540373</p>
+      <a href="https://wa.me/91418540373" class="btn btn-success">
+        <i class="bi bi-whatsapp"></i> WhatsApp Us
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-3">
+  <p>© 2026 Quilim Restaurant</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
