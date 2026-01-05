@@ -3,10 +3,10 @@
 
   <div class="row">
 
-    <!-- Booking Form -->
+    <!-- Reservation Form -->
     <div class="col-md-6">
 
-      <!-- Form container -->
+      <!-- Form Container -->
       <div id="booking-form-container">
         <form id="booking-form">
 
@@ -45,17 +45,17 @@
         </form>
       </div>
 
-      <!-- Thank You Message (hidden initially) -->
+      <!-- Thank You Message (hidden at first) -->
       <div id="thank-you-message" class="text-center" style="display:none; margin-top: 20px;">
         <h3 class="text-success">🎉 Thank You!</h3>
-        <p>Your table is successfully booked at <strong>Quilim Restaurant</strong>!</p>
-        <p>We look forward to serving you 🙂</p>
-        <a href="index.html" class="btn btn-success">Back to Home</a>
+        <p>Your table at <strong>Quilim Restaurant</strong> has been successfully booked!</p>
+        <p>We look forward to serving you 😊</p>
+        <a href="index.html" class="btn btn-success mt-3">Back to Home</a>
       </div>
 
     </div>
 
-    <!-- Map + Contact Info -->
+    <!-- Map & Contact Info -->
     <div class="col-md-6">
       <div class="ratio ratio-16x9 mb-3">
         <iframe 
@@ -71,27 +71,25 @@
 </section>
 
 <script>
-// JavaScript to handle the form submit and show a thank you message
+// Send form using fetch and show thank you message
 document.getElementById("booking-form").addEventListener("submit", async function(e) {
-  e.preventDefault(); // Prevent default page reload
+  e.preventDefault();  // Prevent default full page reload
 
-  const form = e.target;
   const scriptURL = "https://script.google.com/macros/s/AKfycbwBFgoiUQK9_xjyPGg9eZZmZTeOVXusW1J5OpzOM1za4NSowRJ-bxBfyE0WRduf2RkK/exec";
 
   try {
     await fetch(scriptURL, {
       method: "POST",
-      body: new FormData(form)
+      body: new FormData(this)
     });
 
     // Hide the form
     document.getElementById("booking-form-container").style.display = "none";
-    // Show the thank you message
+    // Show thank you message
     document.getElementById("thank-you-message").style.display = "block";
-
   } catch (error) {
-    alert("Oops! Something went wrong – please try again.");  
-    console.error("Form submission error:", error);
+    alert("Something went wrong — please try again.");
+    console.error(error);
   }
 });
 </script>
