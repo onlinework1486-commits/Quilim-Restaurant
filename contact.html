@@ -1,77 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quilim Restaurant - Book a Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    /* Keep your existing styles exactly the same */
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: #8b0000;
+      color: #fff;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+    }
+    header img {
+      height: 50px;
+    }
+    header h1 {
+      margin-left: 15px;
+      font-size: 22px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      margin-top: 20px;
+      padding: 12px;
+      background: #8b0000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: #a30000;
+    }
+    #msg {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+    footer {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav style="background:#111; padding:15px;">
-  <a href="index.html" style="color:white; text-decoration:none; font-size:22px;">
-    Quilim Restaurant
-  </a>
-</nav>
+<header>
+  <img src="assets/images/logo.png" alt="Quilim Restaurant Logo">
+  <h1>Quilim Restaurant</h1>
+</header>
 
-<!-- BOOKING SECTION -->
-<section style="max-width:700px; margin:40px auto; padding:20px; background:#fff; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.1);">
+<div class="container">
+  <h2>Book a Table</h2>
+  <form id="bookingForm">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" required>
 
-  <h2 style="text-align:center; color:#8B0000;">Book a Table</h2>
-  <p style="text-align:center;">Reserve your table at Quilim Restaurant</p>
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" required>
 
-  <form action="success.html" method="GET">
+    <label for="date">Date</label>
+    <input type="date" id="date" name="date" required>
 
-    <label>Name</label>
-    <input type="text" required placeholder="Your Name"
-      style="width:100%; padding:10px; margin:8px 0;">
+    <label for="time">Time</label>
+    <input type="time" id="time" name="time" required>
 
-    <label>Phone</label>
-    <input type="tel" required placeholder="Your Phone Number"
-      style="width:100%; padding:10px; margin:8px 0;">
-
-    <label>Date</label>
-    <input type="date" required
-      style="width:100%; padding:10px; margin:8px 0;">
-
-    <label>Time</label>
-    <input type="time" required
-      style="width:100%; padding:10px; margin:8px 0;">
-
-    <label>Guests</label>
-    <select style="width:100%; padding:10px; margin:8px 0;">
+    <label for="guests">Number of Guests</label>
+    <select id="guests" name="guests">
       <option>1–2 People</option>
       <option>3–4 People</option>
       <option>5–6 People</option>
       <option>7+ People</option>
     </select>
 
-    <button type="submit"
-      style="width:100%; padding:12px; background:#8B0000; color:white; border:none; font-size:16px; border-radius:5px; cursor:pointer;">
-      Book Table
-    </button>
-
+    <button type="submit">Book Table</button>
   </form>
 
-</section>
+  <p id="msg"></p>
+</div>
 
-<!-- CONTACT INFO -->
-<section style="text-align:center; padding:30px;">
-  <h3>Contact Us</h3>
-  <p>📍 Peoples Colony, Faisalabad</p>
-  <p>📞 (041) 8540373</p>
-  <p>⏰ Open till 12:00 AM</p>
-</section>
+<footer>
+  © 2026 Quilim Restaurant | All Rights Reserved
+</footer>
+
+<script>
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  fetch("https://script.google.com/macros/s/AKfycbyQcFI1-TWD-3FJ2XlbQ5G_SuuwXK8nPKbLu10PPssPVF_9fkLKKAXoG_Tzolf8ckng/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      name: document.getElementById("name").value,
+      phone: document.getElementById("phone").value,
+      date: document.getElementById("date").value,
+      time: document.getElementById("time").value,
+      guests: document.getElementById("guests").value
+    })
+  })
+  .then(res => res.json())
+  .then(() => {
+    document.getElementById("msg").innerHTML = 
+      "✅ Thank you! Your table has been successfully booked at Quilim Restaurant.";
+    document.getElementById("bookingForm").reset();
+  })
+  .catch(() => {
+    document.getElementById("msg").innerHTML =
+      "❌ Error! Please try again.";
+  });
+});
+</script>
 
 </body>
-function doPost(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-
-  var data = JSON.parse(e.postData.contents);
-
-  sheet.appendRow([
-    data.name,
-    data.phone,
-    data.date,
-    data.time,
-    data.guests,
-    new Date()
-  ]);
-
-  return ContentService
-    .createTextOutput(JSON.stringify({status: "success"}))
-    .setMimeType(ContentService.MimeType.JSON);
-}
+</html>
