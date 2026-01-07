@@ -6,108 +6,104 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
+body{
   font-family: Arial, sans-serif;
-  background: #f2f2f2;
-  margin: 0;
+  background:#f3f3f3;
+  margin:0;
 }
-.container {
-  max-width: 450px;
-  background: #fff;
-  margin: 50px auto;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+.box{
+  max-width:420px;
+  background:#fff;
+  margin:60px auto;
+  padding:25px;
+  border-radius:8px;
+  box-shadow:0 0 12px rgba(0,0,0,.1);
 }
-h2 {
-  text-align: center;
-  color: #8b0000;
+h2{
+  text-align:center;
+  color:#8b0000;
 }
-label {
-  display: block;
-  margin-top: 12px;
-  font-weight: bold;
+label{
+  margin-top:10px;
+  display:block;
+  font-weight:bold;
 }
-input, select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+input,select{
+  width:100%;
+  padding:10px;
+  margin-top:5px;
+  border:1px solid #ccc;
+  border-radius:5px;
 }
-button {
-  width: 100%;
-  margin-top: 20px;
-  padding: 12px;
-  background: #8b0000;
-  color: #fff;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+button{
+  width:100%;
+  margin-top:20px;
+  padding:12px;
+  background:#8b0000;
+  color:#fff;
+  border:none;
+  font-size:16px;
+  border-radius:5px;
+  cursor:pointer;
 }
-button:hover {
-  background: #b30000;
+button:hover{
+  background:#a80000;
 }
-#error {
-  color: red;
-  text-align: center;
-  margin-top: 15px;
+#error{
+  color:red;
+  text-align:center;
+  margin-top:15px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h2>Book a Table</h2>
+<div class="box">
+<h2>Table Booking</h2>
 
-  <form id="bookingForm">
-    <label>Name</label>
-    <input type="text" name="name" required>
+<form id="bookingForm">
+  <label>Name</label>
+  <input type="text" name="name" required>
 
-    <label>Phone</label>
-    <input type="tel" name="phone" required>
+  <label>Phone</label>
+  <input type="tel" name="phone" required>
 
-    <label>Date</label>
-    <input type="date" name="date" required>
+  <label>Date</label>
+  <input type="date" name="date" required>
 
-    <label>Time</label>
-    <input type="time" name="time" required>
+  <label>Time</label>
+  <input type="time" name="time" required>
 
-    <label>Guests</label>
-    <select name="guests" required>
-      <option value="1-2">1–2 People</option>
-      <option value="3-4">3–4 People</option>
-      <option value="5-6">5–6 People</option>
-      <option value="7+">7+ People</option>
-    </select>
+  <label>Guests</label>
+  <select name="guests" required>
+    <option value="1-2">1–2</option>
+    <option value="3-4">3–4</option>
+    <option value="5-6">5–6</option>
+    <option value="7+">7+</option>
+  </select>
 
-    <button type="submit">Confirm Booking</button>
-  </form>
+  <button type="submit">Book Now</button>
+</form>
 
-  <div id="error"></div>
+<div id="error"></div>
 </div>
 
 <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbyQcFI1-TWD-3FJ2XlbQ5G_SuuwXK8nPKbLu10PPssPVF_9fkLKKAXoG_Tzolf8ckng/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbzXRwMWYfYT0HRypAYdytgEUBSjFc-0lnUkInaDiagqR6lm2hm3nUIkNW5jaTGs/exec";
 
 document.getElementById("bookingForm").addEventListener("submit", function(e){
   e.preventDefault();
 
-  fetch(scriptURL, {
-    method: "POST",
-    body: new FormData(this)
+  fetch(scriptURL,{
+    method:"POST",
+    body:new FormData(this)
   })
- .then(() => {
-  window.location.href = "success.html";
-})
-.catch(() => {
-  document.getElementById("error").innerText = "Booking failed. Please try again.";
-});
-
-  .catch(() => {
-    document.getElementById("error").innerText = "Booking failed. Please try again.";
+  .then(()=> {
+    window.location.href = "success.html";
+  })
+  .catch(()=>{
+    document.getElementById("error").innerText="Booking failed. Try again.";
   });
 });
 </script>
