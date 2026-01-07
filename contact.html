@@ -99,14 +99,13 @@ document.getElementById("bookingForm").addEventListener("submit", function(e){
     method: "POST",
     body: new FormData(this)
   })
-  .then(res => res.text())
-.then(txt => {
-  if (txt.trim() === "success") {
-    window.location.href = "success.html";
-  } else {
-    document.getElementById("error").innerText = "Booking failed. Please try again.";
-  }
+ .then(() => {
+  window.location.href = "success.html";
 })
+.catch(() => {
+  document.getElementById("error").innerText = "Booking failed. Please try again.";
+});
+
   .catch(() => {
     document.getElementById("error").innerText = "Booking failed. Please try again.";
   });
